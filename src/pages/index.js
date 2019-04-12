@@ -5,7 +5,7 @@ import FeaturedRecipesList from "../components/featuredRecipesList"
 
 const IndexPage = () => (
   <Layout>
-    <h2>Featured Recipes:</h2>
+    <h2>Our Featured Recipes:</h2>
     <FeaturedRecipesList />
   </Layout>
 )
