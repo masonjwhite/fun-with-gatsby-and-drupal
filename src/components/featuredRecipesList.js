@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 const featuredRecipesList = () => {
   const data = useStaticQuery(graphql`
@@ -7,6 +7,7 @@ const featuredRecipesList = () => {
       allRecipes(limit: 5) {
         edges {
           node {
+            id
             title
             createdAt(formatString: "YYYY MMM DD")
             difficulty
@@ -32,11 +33,13 @@ const featuredRecipesList = () => {
         <>
           <img
             style={{ height: "400px", width: "400px" }}
-            alt="something"
+            alt={recipe.node.title}
             src={recipe.node.relationships.image.relationships.imageFile.url}
           />
           <li key={i}>
-            <h3>{recipe.node.title}</h3>
+            <h3>
+              <Link to={`recipes/${recipe.node.id}`}>{recipe.node.title}</Link>
+            </h3>
             <p>
               {recipe.node.difficulty} - {recipe.node.totalTime} mins
             </p>

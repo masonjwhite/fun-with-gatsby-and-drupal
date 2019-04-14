@@ -1,7 +1,30 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require("path")
 
-// You can delete this file if you're not using it
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  return new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allRecipes {
+          edges {
+            node {
+              id
+            }
+          }
+        }
+      }
+    `).then(results => {
+      results.data.allRecipes.edges.forEach(edge => {
+        createPage({
+          path: `/recipes/${edge.node.id}`,
+          component: path.resolve("./src/components/recipeLayout.js"),
+          context: {
+            id: edge.node.id, // This will be passed to our GraphQL query in the layout
+          },
+        })
+      })
+      resolve()
+    })
+  })
+}
