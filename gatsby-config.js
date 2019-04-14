@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `DrupalEats!`,
+    title: `DrupalEats🍕`,
     description: `Messing around with Gatbsy and Drupal!`,
-    author: `Msaon J. White`,
+    author: `Mason J. White`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -28,12 +28,13 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#BE2623`,
+        theme_color: `#BE2623`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',

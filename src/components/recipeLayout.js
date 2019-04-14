@@ -1,6 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
 import Layout from "./layout"
+
+const RecipeImage = styled.img`
+  height: 400px;
+  width: 600px;
+`
 
 export default function recipeLayout(props) {
   const { recipes } = props.data
@@ -11,7 +17,7 @@ export default function recipeLayout(props) {
       <p>Difficulty: {recipes.difficulty || "Not provided"}</p>
       <p>Total time: {recipes.totalTime} mins</p>
       <p>Preparation time: {recipes.preparationTime} mins</p>
-      <img
+      <RecipeImage
         alt={recipes.title}
         src={recipes.relationships.image.relationships.imageFile.url}
       />
